@@ -56,10 +56,15 @@ async function editTodo(){
     })
     let todos = await getAlltodos();
     renderhtml(todos);
+    editing = false;
 
 }
  async function createTodo(){
     let todoname = document.querySelector(".textinput").value
+    if(todoname == ""){
+        alert("please enter you text input is empty")
+        return;
+    }
     await sendtodoserver(todoname)
     let todos = await getAlltodos();
     renderhtml(todos);
